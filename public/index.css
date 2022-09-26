@@ -1,0 +1,130 @@
+*{
+    font-family: WorkSans-Regular,Helvetica,Arial,sans-serif;
+    box-sizing: border-box;
+}
+
+body, html{
+    width: 100%;
+    height: 100%;
+}
+
+body, html, h1{
+    margin: 0;
+    padding: 0;
+}
+
+.mainBody{
+	margin: auto;
+	width: 500px;
+    height: 100%;
+	background-color: gray;
+}
+
+.mainColumn{
+	padding: 10px;
+	width: 100%;
+    height: 100%;
+}
+
+/* game */
+
+.gameContainer{
+	padding-top: 100%;
+	position: relative;
+}
+
+.game{
+	position: absolute;
+	left: 0;
+	top: 0;
+	padding: 10px;
+	
+	width: 100%;
+	height: 100%;
+	display: grid;
+	grid-template-columns: auto auto;
+	grid-gap: 10px;
+}
+
+.game__button{
+	width: 100%;
+	height: 100%;
+	background-color: teal;
+}
+
+.game__button--col1{
+	background-color: red;
+}
+.game__button--col1:hover{
+	background-color: brown;
+}
+.game__button--col2{
+	background-color: green;
+}
+.game__button--col2:hover{
+	background-color: brown;
+}
+.game__button--col3{
+	background-color: yellow;
+}
+.game__button--col3:hover{
+	background-color: brown;
+}
+.game__button--col4{
+	background-color: blue;
+}
+.game__button--col4:hover{
+	background-color: brown;
+}
+
+
+#btnStart{
+	width: 100%;
+	color: white;
+	margin: auto;
+	width: 400px;
+	text-align: center;
+}
+
+#btnStart:active{
+	background: black;
+}
+
+/* scoreboard */
+
+#scoreboard{
+}
+
+.scoreboard__title{
+	width: 100%;
+	text-align: center;
+}
+
+.scoreboard__entries{
+	width: 100%;
+	height: auto;
+	border-style: solid;
+	border-width: 1px;
+	border-color: lime;
+}
+
+/* modal */
+
+.modal{
+	z-index: 100;
+	position: absolute;
+	width: inherit;
+	height: 100%;
+	background: #00000055;
+	display: flex;
+	justify-content: center;
+	text-align: center;
+	align-items: center;
+	visibility: hidden;
+}
+
+.modal__window{
+	width: 100%;
+	height: 200px;
+	background: white;
+}
