@@ -69,7 +69,12 @@ export class IndexView {
 		btn?.addEventListener("click", ()=>{
 			let name : string;
 			name = (<HTMLInputElement> document.getElementById("tbxUsername")!).value;
-			callback(name);
+
+			// no empty name
+			let nname : string = name.replace(/ /g,"");
+			if (nname)
+				callback(name);
+
 		}, false);
 
 		//callback(name);
@@ -110,6 +115,11 @@ export class IndexView {
 	public showModalUsername(){
 		let mod : HTMLElement | null = document.getElementById("modalUsername");
 		mod!.style.visibility = "visible";
+
+
+		let tbx : HTMLElement | null = document.getElementById("tbxUsername");
+		(<HTMLInputElement>tbx!).value = "";
+
 	}
 
 	public hideModalUsername(){
@@ -118,11 +128,6 @@ export class IndexView {
 	}
 
 	public showScoreTable(scores : iScore[]){
-
-		// sort
-		scores.sort((a: iScore, b: iScore) => {
-			return (b.score - a.score);
-		});
 
 		// clear container
 		let con : HTMLElement = document.getElementById("scoreboardTable")!;

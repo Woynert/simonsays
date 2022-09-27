@@ -66,8 +66,9 @@ export class IndexController {
 			if (this.model.colorIndex == (this.model.sequence.length -1)){
 				// next level
 				this.model.colorIndex = 0;
-				this.model.sequence.push(this.getRandomColor());
+				//this.model.sequence.push(this.getRandomColor());
 				this.model.scorePoint();
+				this.model.sequence = this.getRandomSequence(this.model.level +1);
 				console.log(this.model.sequence);
 
 				this.view.showScore(this.model.score);
@@ -98,7 +99,8 @@ export class IndexController {
 
 		if (!this.model.started){
 			this.model.setNewGame();
-			this.model.sequence = [this.getRandomColor()];
+			//this.model.sequence = [this.getRandomColor()];
+			this.model.sequence = this.getRandomSequence(1);
 
 			this.view.showScore(this.model.score);
 			this.runAnimation();
@@ -131,6 +133,16 @@ export class IndexController {
 
 
 	// logic
+	
+	private getRandomSequence(length: number): number[]{
+		let seq : number[] = [];
+
+		for (let i : number = 0; i < length; i++){
+			seq.push(this.getRandomColor());
+		}
+
+		return seq;
+	}
 
 	private getRandomColor(): number{
 		return Math.floor(Math.random() * 4);
@@ -175,6 +187,14 @@ export class IndexController {
 			name: name,
 			score: score
 		});
+
+		// sort
+		scores.scores.sort((a: iScore, b: iScore) => {
+			return (b.score - a.score);
+		});
+
+		// cut to only 10 elements
+		scores.scores = scores.scores.slice(0, 10);
 
 		// save
 		localStorage.setItem("scores", JSON.stringify(scores));

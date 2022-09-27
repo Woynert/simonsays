@@ -61,6 +61,7 @@ class IndexModel {
 
 	public scorePoint(){
 		this.score += dScoreFactor.get(this.dificulty)!;
+		this.level ++;
 	}
 
 	public setNewGame(){
