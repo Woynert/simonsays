@@ -39,7 +39,10 @@ export class IndexView {
 		this.btnColor = Array.from(document.getElementsByClassName("game__button"));
 
 		this.btnColor.forEach((e : Element, i)=>{
-			e.addEventListener("click", ()=>{callback(i)}, false);
+			e.addEventListener("click", ()=>{
+				this.playSoundColor(i);
+				callback(i);
+			}, false);
 		});
 
 	}
@@ -83,10 +86,12 @@ export class IndexView {
 	// visual effects
 	
 	public showColor(icolor: number){
-		(<HTMLElement>this.btnColor[icolor]).style.background = "pink";
+		(<HTMLElement>this.btnColor[icolor]).classList.add(`game__button--col${icolor+1}--high`);
+		this.playSoundColor(icolor);
 	}
 	public hideColor(icolor: number){
-		(<HTMLElement>this.btnColor[icolor]).style.background = "black";
+		(<HTMLElement>this.btnColor[icolor]).classList.remove(`game__button--col${icolor+1}--high`);
+		//(<HTMLElement>this.btnColor[icolor]).style.background = "black";
 	}
 
 	public showScore(score: number){
@@ -150,15 +155,10 @@ export class IndexView {
 
 	}
 
-    //public set display(display: HTMLElement) {
-        //this._display = display;
-    //}
-
-    //public get display() {
-        //return this._display;
-    //}
-
-    //public addToDisplay(content: string): void {
-        //this._display.innerHTML += `<p>${content}</p>`
-    //}
+	public playSoundColor(icolor: number){
+		const music = new Audio(`./audio/sound${((icolor+1) % 5)}.wav`);
+		music.play();
+		music.loop = false;
+		console.log(music);
+	}
 }

@@ -20,6 +20,14 @@
 	--purple-b: #d3869b;
 	--aqua-b: #8ec07c;
 	--orange-b: #fe8019;
+
+	--red-f: #9d0006;
+	--green-f: #79740e;
+	--yellow-f: #b57614;
+	--blue-f: #076678;
+	--purple-f: #8f3f71;
+	--aqua-f: #427b58;
+	--orange-f: #af3a03;
 }
 
 *{
@@ -114,23 +122,54 @@ body, html, h1{
 .game__button--col1:hover{
 	background-color: var(--red-b);
 }
+.game__button--col1--high,
+.game__button--col1:active
+{
+	outline: 10px solid var(--dark2);
+	outline-offset: -40px;
+	background-color: var(--red-b);
+}
+
 .game__button--col2{
 	background-color: var(--green);
 }
 .game__button--col2:hover{
 	background-color: var(--green-b);
 }
+.game__button--col2--high,
+.game__button--col2:active
+{
+	outline: 10px solid var(--dark2);
+	outline-offset: -40px;
+	background-color: var(--green-b);
+}
+
 .game__button--col3{
 	background-color: var(--yellow);
 }
 .game__button--col3:hover{
 	background-color: var(--yellow-b);
 }
+.game__button--col3--high,
+.game__button--col3:active
+{
+	outline: 10px solid var(--dark2);
+	outline-offset: -40px;
+	background-color: var(--yellow-b);
+}
+
 .game__button--col4{
 	background-color: var(--blue);
 	border-bottom-right-radius: 50px;
 }
 .game__button--col4:hover{
+	background-color: var(--blue-b);
+}
+.game__button--col4--high,
+.game__button--col4:active
+{
+	outline: 10px solid var(--dark2);
+	outline-offset: -40px;
 	background-color: var(--blue-b);
 }
 

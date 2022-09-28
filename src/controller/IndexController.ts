@@ -158,7 +158,6 @@ export class IndexController {
 			let icolor : number = this.model.sequence[i];
 			this.view.showColor(icolor);
 			await sleep(this.model.getTime());
-			//await sleep(500);
 			this.view.hideColor(icolor);
 			await sleep(100);
 		}
