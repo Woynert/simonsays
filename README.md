@@ -1,4 +1,4 @@
-# Simos Says
+# Simon Says
 
 Install node packages: `npm i`
 
