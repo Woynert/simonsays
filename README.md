@@ -1,14 +1,10 @@
 # Simos Says
 
-Install node packages
+Install node packages: `npm i`
 
-```bash
-npm i
-```
+Build: `npx tsc`
 
-Compile
+Screenshot:
 
-```bash
-npx tsc
-```
+![](./demo.png)
 
