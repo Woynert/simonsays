@@ -11,22 +11,40 @@
 	<div class="mainBody">
 		<div class="modal" id="modalUsername">
 		<div class="modal__window">
-			<div>
-				<div>Score:</div>
-				<div id="modalScoreLabel">1200</div>
-			</div>
-			Username:
-			<input type="text" id="tbxUsername">
+			<div class="modal__gameover">Fin del juego</div>
+			<table class="modal__gameover__table">
+				<tr>
+					<td>
+				<div class="modal__scoreLabel">Score:</div>
+					</td>
+					<td>
+				<div class="modal__scoreLabel" id="modalScoreLabel">1200</div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+					Nombre: 
+					</td>
+					<td>
+					<input type="text" id="tbxUsername">
+					</td>
+				</tr>
+			</table>
 			<br>
-			<button type="button" id="btnUsername">Aceptar</button>
+			<div class="modal__btnSubmmit__container">
+				<button type="button" id="btnUsername">Aceptar</button>
+			</div>
 		</div>
 		</div>
 
 		<div class="modal" id="modalDificulty">
 		<div class="modal__window">
-			<button type="button" class="btnDifficulty">Facil</button>
-			<button type="button" class="btnDifficulty">Normal</button>
-			<button type="button" class="btnDifficulty">Dificil</button>
+			<div class="btnDifficulty__container">
+				<button type="button" class="btnDifficulty">Facil</button></div>
+			<div class="btnDifficulty__container">
+				<button type="button" class="btnDifficulty">Normal</button></div>
+			<div class="btnDifficulty__container">
+				<button type="button" class="btnDifficulty">Dificil</button></div>
 		</div>
 		</div>
 

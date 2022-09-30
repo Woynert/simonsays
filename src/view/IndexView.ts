@@ -156,9 +156,14 @@ export class IndexView {
 	}
 
 	public playSoundColor(icolor: number){
-		const music = new Audio(`./audio/sound${((icolor+1) % 5)}.wav`);
-		music.play();
-		music.loop = false;
-		console.log(music);
+		const sound = new Audio(`./audio/sound${((icolor+1) % 5)}.wav`);
+		sound.play();
+		sound.loop = false;
+	}
+
+	public playLose(){
+		const sound = new Audio(`./audio/lose.wav`);
+		sound.play();
+		sound.loop = false;
 	}
 }

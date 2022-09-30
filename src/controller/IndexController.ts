@@ -84,6 +84,7 @@ export class IndexController {
 			console.log("Error", btnId);
 			console.log("Score", this.model.score);
 			//this.model.setLoseGame();
+			this.view.playLose();
 
 			if (this.model.score > 0){
 				// username

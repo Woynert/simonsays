@@ -101,7 +101,6 @@ body, html, h1{
 	left: 0;
 	top: 0;
 	padding: 10px;
-	
 	width: 100%;
 	height: 100%;
 	display: grid;
@@ -245,7 +244,74 @@ body, html, h1{
 .modal__window{
 	width: 100%;
 	height: 200px;
-	background: white;
+	background: var(--dark1);
+	border-color: var(--purple);
+	border-width: 2px;
+	border-style: solid;
+	padding-bottom: 10px;
+	position: relative;
+}
+
+.btnDifficulty,
+#btnUsername
+{
+	width: 100%;
+	height: 100%;
+	background: var(--dark0);
+	border-color: var(--dark1);
+	border-style: solid;
+	color: var(--purple-b);
+}
+
+.btnDifficulty:hover,
+#btnUsername:hover
+{
+	width: 100%;
+	height: 100%;
+	background: var(--dark0);
+	border-color: var(--purple);
+	border-style: solid;
+}
+
+.btnDifficulty__container {
+	width: 100%;
+	height: 33%;
+	padding: 10px 10px 0 10px;
 }
 
 /* */
+
+/*.modal#modalUsername {*/
+	/*visibility: visible !important;*/
+/*}*/
+
+.modal__scoreLabel{
+	display: inline-block;
+}
+
+.modal__gameover{
+	margin: 20px;
+	font-size: 1.2em;
+	font-weight: bold;
+}
+
+.modal__btnSubmmit__container{
+	height: 40px;
+	bottom: 0;
+	position: absolute;
+	width: 100%;
+}
+
+#tbxUsername{
+	background: var(--dark0);
+	border-style: solid;
+	border-color: var(--dark2);
+	width: 100%;
+	height: 30px;
+}
+
+.modal__gameover__table{
+	width: 80%;
+	margin: auto;
+	text-align: left;
+}
