@@ -29,11 +29,6 @@ export class IndexController {
     constructor(model: IndexModel, view: IndexView) {
         this.model = model;
         this.view = view;
-        //this.types();
-        //this.arrays();
-        //this.tuples();
-        //this.vun();
-		//
 		this.insertCallbacks();
 		this.getScores();
 		this.view.showDificulty(this.model.getDificultyLabel());
@@ -71,7 +66,6 @@ export class IndexController {
 			if (this.model.colorIndex == (this.model.sequence.length -1)){
 				// next level
 				this.model.colorIndex = 0;
-				//this.model.sequence.push(this.getRandomColor());
 				this.model.scorePoint();
 				this.model.sequence = this.getRandomSequence(this.model.level +1);
 				console.log(this.model.sequence);
@@ -82,13 +76,11 @@ export class IndexController {
 			else{
 				// continue
 				this.model.colorIndex++;
-				//this.view.showScore(this.model.score);
 			}
 		}
 		else{
 			console.log("Error", btnId);
 			console.log("Score", this.model.score);
-			//this.model.setLoseGame();
 			this.view.playLose();
 
 			if (this.model.score > 0){
@@ -173,39 +165,29 @@ export class IndexController {
 
 	// storage
 
-	private saveScore(name: string, score: number){
+	private async saveScore(name: string, score: number){
 
-		// get
-		let scores : iScoreStorage;
-		let storedScores : string | null = localStorage.getItem("scores");
+		try{
+			let body: iScore = {name: name, score: score};
+			
+			const response = await fetch("http://127.0.0.1:1802/scores", {
+				method: "POST",
+				headers: { "Content-Type": "application/json" },
+				body: JSON.stringify(body)
+			}).then((response) => response.json())
+			.then((data) => {
+				console.log('Success:', data);
 
-		if (storedScores){
-			scores = <iScoreStorage>JSON.parse(storedScores);
-			console.log(scores);
+				// show
+				this.getScores();
+			})
+			.catch((error) => {
+				console.error('Error:', error);
+			});;
 		}
-		else{
-			scores = { scores: [] };
+		catch(e){
+			console.log(e);
 		}
-
-		// add
-		scores.scores.push(<iScore>{
-			name: name,
-			score: score
-		});
-
-		// sort
-		scores.scores.sort((a: iScore, b: iScore) => {
-			return (b.score - a.score);
-		});
-
-		// cut to only 10 elements
-		scores.scores = scores.scores.slice(0, 10);
-
-		// save
-		localStorage.setItem("scores", JSON.stringify(scores));
-
-		// show
-		this.getScores();
 	}
 
 	private async getScores(){
@@ -213,11 +195,7 @@ export class IndexController {
 		let scores: iGetScore = {error: false, scores: []};
 
 		try{
-			const response = await fetch("http://localhost:1802/scores");
-			//const response = await fetch("http://localhost:1802/scores", {
-			//method: "GET",
-			//mode: 'same-origin'
-			//});
+			const response = await fetch("http://127.0.0.1:1802/scores");
 			scores = <iGetScore>(await response.json());
 		}
 		catch(e){
@@ -227,6 +205,5 @@ export class IndexController {
 		console.log(scores);
 		this.view.showScoreTable(scores.scores);
 	}
-
 
 }
