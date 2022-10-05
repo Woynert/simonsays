@@ -16,6 +16,11 @@ interface iScoreStorage{
 	scores: iScore[];
 }
 
+interface iGetScore{
+	error: boolean;
+	scores: iScore[];
+}
+
 export class IndexController {
 
     public model: IndexModel;
@@ -203,100 +208,25 @@ export class IndexController {
 		this.getScores();
 	}
 
-	private getScores(){
-		// get
-		let scores : iScoreStorage;
-		let storedScores : string | null = localStorage.getItem("scores");
+	private async getScores(){
 
-		if (storedScores){
-			scores = <iScoreStorage>JSON.parse(storedScores);
-			console.log(scores);
+		let scores: iGetScore = {error: false, scores: []};
+
+		try{
+			const response = await fetch("http://localhost:1802/scores");
+			//const response = await fetch("http://localhost:1802/scores", {
+			//method: "GET",
+			//mode: 'same-origin'
+			//});
+			scores = <iGetScore>(await response.json());
 		}
-		else{
-			scores = { scores: [] };
+		catch(e){
+			console.log(e);
 		}
 
+		console.log(scores);
 		this.view.showScoreTable(scores.scores);
 	}
 
-    //public types(): void {
-        //this.view.addToDisplay(`<h3>Types BY NERT EL JOY</h3>`);
-
-        //let _num: number = 123;
-        //this.view.addToDisplay(`Number int = ${_num.toString() + " "}`);
-
-        //_num = 123.456;
-        //this.view.addToDisplay(`Number float = ${_num.toString() + " "}`);
-
-        //let _boo: boolean = true;
-        //this.view.addToDisplay(`Boolean = ${_boo.toString()}`);
-
-        //let _str: string = "text";
-        //this.view.addToDisplay(`String = ${_str.toString()}`);
-
-        //let _any: any = "any";
-        //this.view.addToDisplay(`Any = ${_any.toString()}`);
-        //_any = false;
-        //this.view.addToDisplay(`Any = ${_any.toString()}`);
-
-        //const PI: number = 3.1416;
-        //this.view.addToDisplay(`Constant: PI = ${_any.toString()}`);
-
-        //_str = 123 + " stirng";
-        //this.view.addToDisplay(`toConcatenate = ${_str}`);
-    //}
-
-    //public arrays(): void {
-        //this.view.addToDisplay(`<h3>Arrays</h3>`);
-
-        //let out: string;
-
-        //let _numArray: number[] = [0, 1, 2];
-        //out = 'Number array = [';
-        //_numArray.forEach(i => { out += ` ${i} ` });
-        //this.view.addToDisplay(out + ']');
-
-        //let _booArray: boolean[] = [true, false];
-        //out = 'Boolean array = [';
-        //_booArray.forEach(i => { out += ` ${i} ` });
-        //this.view.addToDisplay(out + ']');
-
-        //let _strArray: string[] = ["text0", "text1", "test2"];
-        //out = 'String array = [';
-        //_strArray.forEach(i => { out += ` ${i} ` });
-        //this.view.addToDisplay(out + ']');
-
-        //let _arrayAny: any[] = [0, true, "text0", [1, 2, 3], { attr1: "value 1", attr2: "value 2" }];
-        //out = 'Any array = [';
-        //_arrayAny.forEach(index => {
-            //if (typeof (index) === "number") {
-                //out += ` ${index} `
-            //}
-            //if (typeof (index) === "string") {
-                //out += ` ${index} `
-            //}
-            //if (Array.isArray(index)) {
-                //out += ` [${index}] `
-            //}
-        //});
-        //out += `{${Object.keys(_arrayAny[4]).map(key => `${key}: ${_arrayAny[4][key]}`)}}`;
-        //this.view.addToDisplay(out + ']');
-    //}
-
-    //public tuples(): void {
-        //this.view.addToDisplay(`<h3>Tuples</h3>`);
-        //let _tuple: [string, number] = ["text", 1];
-        //this.view.addToDisplay(`Tuple = ${_tuple.toString()}`);
-    //}
-
-    //public vun(): void {
-        //this.view.addToDisplay(`<h3>Void, Undefined, Null</h3>`);
-        //let _void: void = undefined;
-        //this.view.addToDisplay(`Void = ${typeof (_void)}`);
-        //let _null: null = null;
-        //this.view.addToDisplay(`Null = ${typeof (_null)}`);
-        //let _undefined: undefined = undefined;
-        //this.view.addToDisplay(`Undefined = ${typeof (_undefined)}`);
-    //}
 
 }
