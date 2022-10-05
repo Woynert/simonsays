@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="./index.css" rel="stylesheet">
+    <title>Typescript</title>
+</head>
+<body>
+	<div class="mainBody">
+		<div class="modal" id="modalUsername">
+		<div class="modal__window">
+			<div class="modal__gameover">Fin del juego</div>
+			<table class="modal__gameover__table">
+				<tr>
+					<td>
+				<div class="modal__scoreLabel">Score:</div>
+					</td>
+					<td>
+				<div class="modal__scoreLabel" id="modalScoreLabel">1200</div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+					Nombre: 
+					</td>
+					<td>
+					<input type="text" id="tbxUsername">
+					</td>
+				</tr>
+			</table>
+			<br>
+			<div class="modal__btnSubmmit__container">
+				<button type="button" id="btnUsername">Aceptar</button>
+			</div>
+		</div>
+		</div>
+
+		<div class="modal" id="modalDificulty">
+		<div class="modal__window">
+			<div class="btnDifficulty__container">
+				<button type="button" class="btnDifficulty">Facil</button></div>
+			<div class="btnDifficulty__container">
+				<button type="button" class="btnDifficulty">Normal</button></div>
+			<div class="btnDifficulty__container">
+				<button type="button" class="btnDifficulty">Dificil</button></div>
+		</div>
+		</div>
+
+		<div class="mainColumn">
+		<h1>Simón Dice</h1>
+		<div id="dificultyLabel">Facil</div>
+		<div id="score">
+			<div>Score: </div>
+			<div id="scoreLabel">0</div>
+		</div>
+
+		<div class="gameBackground">
+		<div class="gameFix">
+		<div class="gameContainer">
+		<div class="game">
+			<div class="game__button game__button--col1">
+			</div>
+			<div class="game__button game__button--col2">
+			</div>
+			<div class="game__button game__button--col3">
+			</div>
+			<div class="game__button game__button--col4">
+			</div>
+		</div>
+		</div>
+		</div>
+		</div>
+
+		<div id="btnStart" class="btnMain">Empezar</div>
+		<div id="btnDificulty" class="btnMain">Seleccionar Dificultad</div>
+
+		<div id="scoreboard">
+			<div class="scoreboard__title">Puntajes</div>
+			<table class="scoreboard__entries" id="scoreboardTable">
+			</table>
+		</div>
+		</div>
+	</div>
+    <script src="./js/index.js" type="module"></script>
+</body>
+</html>
